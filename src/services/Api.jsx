@@ -16,7 +16,20 @@ const URL = 'https://api.themoviedb.org/3';
 const params = {
   api_key: API_KEY,
   page: 1,
-  query: '',
+}
+
+export const getTrendingForDay = async () => { 
+  const url = URL + '/trending/movie/day';
+  const responce = await axios.get(url, { params });
+
+  return responce.data;
+}
+
+export const getMovie = async (id) => { 
+  const url = URL + `/trending/movie/day${id}`;
+  const responce = await axios.get(url, { params });
+
+  return responce.data;
 }
 
 export const fetchData = async (strQuery, page) => { 
