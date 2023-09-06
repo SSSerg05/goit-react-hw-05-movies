@@ -13,17 +13,25 @@ export const App = () => {
     // }}
     >
       <nav>
-        <NavLink>Home</NavLink>
-        <NavLink>SearchMovies</NavLink>
-        <NavLink>MovieDetails</NavLink>
+        <ul>
+          <li>
+            <NavLink>Home</NavLink>
+          </li>
+          <li>
+            <NavLink>SearchMovies</NavLink>
+          </li>
+          <li>
+            <NavLink>MovieDetails</NavLink>
+          </li>
+        </ul>
       </nav>
       
       <Routes>
         <Route path="/" element={<div>Home</div>} />
         <Route path="/movies" element={<div>Movies</div>} />
         <Route path="/movies/:movieId" element={<div>MovieDetails</div>} />
-        
-          React homework template  
+        <Route path="/movies/:movieId/cast" element={<div>MovieDetailsCast</div>} />
+        <Route path="/movies/:movieId/reviews" element={<div>MovieDetailsReviews</div>} />
       </Routes>
 
       
