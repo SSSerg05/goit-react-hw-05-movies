@@ -20,9 +20,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<div>{<Home />}</div>} />
         <Route path="/movies" element={<div>{ <SearchMovies /> }</div>} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-        <Route path="/movies/:movieId/cast" element={<div>MovieDetailsCast</div>} />
-        <Route path="/movies/:movieId/reviews" element={<div>MovieDetailsReviews</div>} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} >
+          <Route path="cast" element={<div>MovieDetailsCast</div>} />
+          <Route path="reviews" element={<div>MovieDetailsReviews</div>} />
+        </Route>
       </Routes>
 
       
