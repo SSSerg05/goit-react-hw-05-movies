@@ -19,7 +19,7 @@ export const MovieDetails = () => {
         }
 
         setDataMovie(data);
-        setIsLoading(true)
+        setIsLoading(true);
 
       } catch (error) {
         console.log(error);
