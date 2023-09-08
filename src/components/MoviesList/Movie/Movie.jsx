@@ -5,8 +5,8 @@ import { Genres } from "./Genres"
 
 export const Movie = ({ movie }) => {
  
-  console.log(movie);
-  console.log(movie.genres);
+  // console.log(movie);
+  // console.log(movie.genres);
   const realease_year = new Date(movie.release_date).getFullYear();
 
   return (
@@ -22,6 +22,7 @@ export const Movie = ({ movie }) => {
           <h2>Overview</h2>
           <p>{movie.overview}</p>
           <Genres genres={ movie.genres } />
+          
         </div>
       </div>
     </div>

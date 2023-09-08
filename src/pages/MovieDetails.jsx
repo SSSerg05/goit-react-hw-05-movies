@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
 import { Movie } from "../components/MoviesList/Movie/Movie";
-import { useEffect, useState } from "react";
+
 
 export const MovieDetails = () => {
 
@@ -32,7 +33,7 @@ export const MovieDetails = () => {
 
   return (
     <>
-      {isLoading} < Movie movie={dataMovie} />
+      {isLoading} <Movie movie={dataMovie} />
     </>
   );
 }

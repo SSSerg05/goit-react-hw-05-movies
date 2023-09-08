@@ -15,6 +15,7 @@ const params = {
 export const getTrendingForDay = async () => { 
   const url = URL + '/trending/movie/day';
   const responce = await axios.get(url, { params });
+  // console.log(responce);
 
   return responce.data;
 }

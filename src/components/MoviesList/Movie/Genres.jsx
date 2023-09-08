@@ -1,6 +1,8 @@
 
 export const Genres = ({ genres }) => { 
-  console.log(genres);
+  if(!genres) {
+    return null;
+  }
 
   return (
     <div>
