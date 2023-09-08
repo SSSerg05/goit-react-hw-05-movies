@@ -8,11 +8,12 @@ export const MovieDetails = () => {
 
   const [dataMovie, setDataMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const { movieId } = useParams();
+  
   useEffect(() => {
     async function fetchData() {
       try {
-        const { movieId } = useParams();
+
         const data = await getMovieFromId(movieId);
         if (data.length === 0) {
           throw new Error("List movies is empty");
@@ -27,7 +28,7 @@ export const MovieDetails = () => {
     
     }
     fetchData();
-  }, []);
+  }, [movieId]);
 
   return (
     <>
