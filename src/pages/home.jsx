@@ -31,7 +31,7 @@ export const Home = () => {
   return (
     <main>
       <h1>Trending movies for day</h1>
-      {isLoading} <MoviesList dataList={data} />
+      { isLoading && (<MoviesList dataList={data} /> ) }
     </main>
   )
 }
