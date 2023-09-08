@@ -10,17 +10,16 @@ import { SharedLayout } from "./SharedLayout";
 export const App = () => {
   return (
 
-      <Routes>
-        <Route path="/" element={ <SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="movies" element={<div>{ <SearchMovies /> }</div>}>
-            <Route path="movies/:movieId" element={<MovieDetails />}>
-              <Route path="cast" element={<div>MovieDetailsCast</div>} />
-              <Route path="reviews" element={<div>MovieDetailsReviews</div>} />
-            </Route>
-          </Route>
-        </Route >
-      </Routes>
+    <Routes>
+      <Route path="/" element={ <SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<div>{ <SearchMovies /> }</div>} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<div>MovieDetailsCast</div>} />
+          <Route path="reviews" element={<div>MovieDetailsReviews</div>} />
+        </Route>
+      </Route>
+    </Routes>
 
   );
 };
