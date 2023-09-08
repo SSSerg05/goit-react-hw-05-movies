@@ -1,11 +1,17 @@
+import { Link } from 'react-router-dom';
+
+import { Genres } from "./Genres"
+
 
 export const Movie = ({ movie }) => {
-  
-  const realease_year = new Date(movie.release_date).getFullYear()
+ 
+  console.log(movie);
+  console.log(movie.genres);
+  const realease_year = new Date(movie.release_date).getFullYear();
 
   return (
     <div> 
-      <p>Back Home</p>
+      <Link to='/'>Back Home</Link>
       <div>
         <div>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
@@ -15,20 +21,7 @@ export const Movie = ({ movie }) => {
           <p>Vote: {movie.vote_average}</p>
           <h2>Overview</h2>
           <p>{movie.overview}</p>
-          <h2>Genres</h2>
-          <ul>
-            
-            {
-              movie.genres.map(item => {
-                return (
-                  <li key={item.id}>
-                    {item.name}
-                  </li>
-                )
-              })
-            }
-
-          </ul>
+          <Genres genres={ movie.genres } />
         </div>
       </div>
     </div>
