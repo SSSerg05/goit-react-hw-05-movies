@@ -4,31 +4,34 @@ import { getMovieFromId } from "../services/Api";
 import { Movie } from "../components/MoviesList/Movie/Movie";
 import { useEffect, useState } from "react";
 
-export const MovieDetails = () => { 
+export const MovieDetails = () => {
 
-  const { movieId } = useParams();
   const [dataMovie, setDataMovie] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-
     async function fetchData() {
       try {
-        const data = await getMovieFromId(movieId);  
+        const { movieId } = useParams();
+        const data = await getMovieFromId(movieId);
         if (data.length === 0) {
-          throw new Error("Gallery empty");
+          throw new Error("List movies is empty");
         }
 
         setDataMovie(data);
+        setIsLoading(true)
+
       } catch (error) {
         console.log(error);
       }
     
     }
     fetchData();
-  }, []); 
+  }, []);
 
   return (
-    // <div>This is Movie Details from:{ movieId }</div>
-    <Movie movie={dataMovie} />
+    <>
+      {isLoading} < Movie movie={dataMovie} />
+    </>
   );
 }
