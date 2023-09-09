@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
 import { Movie } from "../components/MoviesList/Movie/Movie";
@@ -34,6 +34,16 @@ export const MovieDetails = () => {
   return (
     <>
       { isLoading && (<Movie movie={dataMovie} />) }
+
+      <ul>
+        <li>
+          <Link to='cast'>Cast:</Link>
+        </li>
+        <li>
+          <Link to='reviews'>Reviews:</Link>
+        </li>
+      </ul>
+      <Outlet />
     </>
   );
 }
