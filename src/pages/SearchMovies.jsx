@@ -7,6 +7,7 @@ import dataTrending from "../data/trending-day.json"
 export const SearchMovies = () => { 
 
   const [searchParams] = useSearchParams();
+  console.log(searchParams);
   const name = searchParams.get("name");
 
   // useEffect(async () => {
