@@ -1,9 +1,14 @@
-import { MoviesList } from "components/MoviesList/MoviesList"
 
+import { useSearchParams } from "react-router-dom";
+
+import { MoviesList } from "components/MoviesList/MoviesList"
 import dataTrending from "../data/trending-day.json"
 
 export const SearchMovies = () => { 
-  
+
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get("name");
+
   // useEffect(async () => {
   //   //HTTP-queries
   //   //const dataTrending = await ....
@@ -15,7 +20,8 @@ export const SearchMovies = () => {
       <h1>Search movie</h1>
       <input type='text'></input>
       <button></button>
-       <MoviesList dataList={data} />
+      <p>{ name }</p>
+       <MoviesList dataList={ data } />
     </div>
   )
 }
