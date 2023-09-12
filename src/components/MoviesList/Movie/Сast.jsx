@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import {getCreditsFromId} from "../../../services/Api"
+import { CastList } from "./CastList";
 
 export const Cast = () => {
   const {movieId} = useParams();
@@ -32,7 +33,7 @@ export const Cast = () => {
   return (
     <div>
       <h2>Cast</h2>
-      {/* { isLoading && (<div>{ dataMovieCredits }</div>) } */}
+      { isLoading && (<CastList dataCasts={ [...dataMovieCredits].slice(0, 10) } />) }
     </div>
   )
 
