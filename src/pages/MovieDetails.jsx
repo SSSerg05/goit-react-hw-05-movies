@@ -38,7 +38,6 @@ export const MovieDetails = () => {
 
   return (
     <>
-    <Link to="/">to Home</Link>
       { isLoading && (<Movie movie={dataMovie} />) }
 
       <ul>

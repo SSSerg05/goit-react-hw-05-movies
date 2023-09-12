@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {getCreditsFromId} from "../../../services/Api"
 
 export const Cast = () => {
-  const {movieId} = useParams;
+  const {movieId} = useParams();
   const [dataMovieCredits, setDataMovieCredits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,11 +13,8 @@ export const Cast = () => {
       try {
 
         const data = await getCreditsFromId(movieId);
-        
-        console.log(data);
-
         if (data.length === 0) {
-          throw new Error("List credits movies is empty");
+          throw new Error("List credits/cast movies is empty");
         }
 
         setDataMovieCredits(data);
