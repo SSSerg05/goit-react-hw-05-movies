@@ -37,7 +37,7 @@ export const getCreditsFromId = async (id) => {
   const url = URL + `/movie/${id}/credits`;
   
   const responce = await axios.get(url, { params });
-  console.log(responce.data.cast);
+  // console.log(responce.data.cast);
 
   return responce.data.cast;
 }
@@ -49,7 +49,7 @@ export const getReviewsFromId = async (id) => {
   const url = URL + `/movie/${id}/reviews`;
   
   const responce = await axios.get(url, { params });
-  console.log(responce.data.results);
+  // console.log(responce.data.results);
 
   return responce.data.results;
 }

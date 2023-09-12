@@ -33,7 +33,7 @@ export const Cast = () => {
   return (
     <div>
       <h2>Cast</h2>
-      { isLoading && (<CastList dataCasts={ [...dataMovieCredits].slice(0, 10) } />) }
+      { isLoading && (<CastList dataList={ [...dataMovieCredits].slice(0, 10) } />) }
     </div>
   )
 

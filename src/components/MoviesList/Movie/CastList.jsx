@@ -1,17 +1,17 @@
 import { CastCard } from "./CastCard"
 
-export const CastList = (dataCasts) => {
-  console.log(dataCasts);
-  if(!dataCasts) {
+
+export const CastList = ({ dataList }) => {
+  if(!dataList) {
     return null;
   }
 
   return (
     <ul>
-      {dataCasts.map(card => {
+      {dataList.map(cast => {
         return (
-          <li key={ card.id }>
-            <CastCard data={ card } />
+          <li key={cast.id}>
+            <CastCard dataCast={cast} />
           </li>
         )
     })}
