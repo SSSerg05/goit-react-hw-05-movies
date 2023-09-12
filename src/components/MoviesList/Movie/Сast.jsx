@@ -14,7 +14,7 @@ export const Cast = () => {
       try {
 
         const data = await getCreditsFromId(movieId);
-        if (data.length === 0) {
+        if (!data.length) {
           throw new Error("List credits/cast movies is empty");
         }
 

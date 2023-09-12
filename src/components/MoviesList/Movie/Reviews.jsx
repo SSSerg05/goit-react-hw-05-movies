@@ -14,9 +14,7 @@ export const Reviews = () => {
       try {
 
         const data = await getReviewsFromId(movieId);
-        console.log('Reviews',data);
-
-        if (data.length === 0) {
+        if (!data.length) {
           throw new Error("List credits movies is empty");
         }
 

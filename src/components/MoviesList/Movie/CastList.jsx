@@ -2,7 +2,7 @@ import { CastCard } from "./CastCard"
 
 
 export const CastList = ({ dataList }) => {
-  if(!dataList) {
+  if(!dataList.length) {
     return null;
   }
 

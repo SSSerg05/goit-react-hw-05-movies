@@ -1,7 +1,7 @@
 import { ReviewCard } from "./ReviewCard";
 
 export const ReviewsList = ({ dataList }) => {
-  if(!dataList) {
+  if(!dataList.length) {
     return null;
   }
 
