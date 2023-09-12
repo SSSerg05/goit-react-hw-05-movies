@@ -9,10 +9,13 @@ export const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataCredits() {
       try {
 
         const data = await getCreditsFromId(movieId);
+        
+        console.log(data);
+
         if (data.length === 0) {
           throw new Error("List credits movies is empty");
         }
@@ -25,14 +28,14 @@ export const Cast = () => {
       }
     
     }
-    fetchData();
+    fetchDataCredits();
   }, [movieId]);
 
 
   return (
     <div>
       <h2>Cast</h2>
-      { isLoading && (<div>{ dataMovieCredits }</div>) }
+      {/* { isLoading && (<div>{ dataMovieCredits }</div>) } */}
     </div>
   )
 

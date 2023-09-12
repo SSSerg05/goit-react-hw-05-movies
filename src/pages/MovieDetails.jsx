@@ -3,7 +3,7 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
 import { Movie } from "../components/MoviesList/Movie/Movie";
-import { testDataMovie } from "../data/movie-id-346698.json"; 
+// import { testDataMovie } from "../data/movie-id-346698.json"; 
 
 
 export const MovieDetails = () => {
@@ -28,8 +28,8 @@ export const MovieDetails = () => {
         console.log(error);
 
         console.log("Use local Database movie with id=346698");
-        setDataMovie(testDataMovie);
-        setIsLoading(true);
+        // setDataMovie(testDataMovie);
+        // setIsLoading(true);
       }
     
     }
@@ -38,6 +38,7 @@ export const MovieDetails = () => {
 
   return (
     <>
+    <Link to="/">to Home</Link>
       { isLoading && (<Movie movie={dataMovie} />) }
 
       <ul>

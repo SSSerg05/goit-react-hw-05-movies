@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getTrendingForDay } from "../services/Api";
 import { MoviesList } from "../components/MoviesList/MoviesList";
-import { testDataTrending} from "../data/trending-day.json";
+// import { testDataTrending} from "../data/trending-day.json";
 
 export const Home = () => { 
   const [dataTrendsMovies, setDataTrensMovies] = useState([]);
@@ -22,9 +22,9 @@ export const Home = () => {
 
       } catch (error) {
         console.log(error);
-        console.log("Use local Database TrendingForDay");
-        setDataTrensMovies(testDataTrending);
-        setIsLoading(true);
+        // console.log("Use local Database TrendingForDay");
+        // setDataTrensMovies(testDataTrending);
+        // setIsLoading(true);
       }
     
     }
