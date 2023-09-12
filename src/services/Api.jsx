@@ -31,6 +31,30 @@ export const getMovieFromId = async (id) => {
   return responce.data;
 }
 
+// получить список актеров
+//--url 'https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US' \
+export const getCreditsFromId = async (id) => {
+  const url = URL + `/movie/${id}/credits`;
+  
+  const responce = await axios.get(url, { params });
+  console.log(responce);
+
+  return responce.data;
+}
+
+
+// получить обзоры для страницы кинофильма.
+//--url 'https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1' \
+export const getReviewsFromId = async (id) => {
+  const url = URL + `/movie/${id}/reviews`;
+  
+  const responce = await axios.get(url, { params });
+  console.log(responce);
+
+  return responce.data;
+}
+
+
 //search
 // https://api.themoviedb.org/3/search/movie?query=Batman&api_key=347a4b587b74ee2a22d09434547acda6
 export const fetchData = async (strQuery, page) => { 
