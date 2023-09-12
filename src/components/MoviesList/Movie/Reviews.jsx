@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import {getReviewsFromId} from "../../../services/Api"
+import { ReviewsList } from "./ReviewList";
 
 export const Reviews = () => {
   const {movieId} = useParams();
@@ -13,7 +14,7 @@ export const Reviews = () => {
       try {
 
         const data = await getReviewsFromId(movieId);
-console.log('Reviews',data);
+        console.log('Reviews',data);
 
         if (data.length === 0) {
           throw new Error("List credits movies is empty");
@@ -33,8 +34,11 @@ console.log('Reviews',data);
   return (
     <div>
       <h2>Review</h2>
-      {/* { isLoading && (<div>{ dataMovieReviews }</div>) } */}
+      { isLoading && (
+        <div>
+          <ReviewsList dataList={ dataMovieReviews } />
+        </div>
+      )}
     </div>
   )
-
 }
