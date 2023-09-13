@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import { Loader } from "components/Loader/Loader";
 
+import { getMoviesFromQuery } from "../services/Api";
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { Searchbar } from "components/Searchbar/Searchbar";
 
