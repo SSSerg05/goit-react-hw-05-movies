@@ -5,8 +5,8 @@ import { SharedLayout } from "./SharedLayout";
 import { Home } from "pages/Home";
 import { SearchMovies } from "pages/SearchMovies";
 import { MovieDetails } from "pages/MovieDetails";
-import { Cast } from "../components/MoviesList/Movie/Сast";
-import { Reviews } from "../components/MoviesList/Movie/Reviews";
+import { Cast } from "../components/MoviesList/Movie/Cast/Сast";
+import { Reviews } from "../components/MoviesList/Movie/Review/Reviews";
 
 
 export const App = () => {
