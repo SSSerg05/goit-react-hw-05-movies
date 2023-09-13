@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import {getReviewsFromId} from "../../../../services/Api"
 import { ReviewsList } from "./ReviewList";
+import {  } from "./Reviews.styled";
+
 
 export const Reviews = () => {
   const {movieId} = useParams();

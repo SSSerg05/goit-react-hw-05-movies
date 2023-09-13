@@ -1,3 +1,4 @@
+import {  } from "./Cast.styled.js";
 
 
 export const CastCard = ({ dataCast }) => {
