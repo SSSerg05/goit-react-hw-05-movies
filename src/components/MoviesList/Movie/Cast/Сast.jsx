@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {getCreditsFromId} from "../../../services/Api"
+import {getCreditsFromId} from "../../../../services/Api"
 import { CastList } from "./CastList";
 
 export const Cast = () => {

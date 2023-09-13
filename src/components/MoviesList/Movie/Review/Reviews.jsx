@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {getReviewsFromId} from "../../../services/Api"
+import {getReviewsFromId} from "../../../../services/Api"
 import { ReviewsList } from "./ReviewList";
 
 export const Reviews = () => {
