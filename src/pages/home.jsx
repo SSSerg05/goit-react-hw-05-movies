@@ -9,11 +9,12 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   useEffect(() => {
+    const controller = new AbortController();
 
     async function fetchData() {
       try {
 
-        const data = await getTrendingForDay();
+        const data = await getTrendingForDay(controller);
         if ( !data.results.length ) {
           throw new Error("List movies is empty");
         }
@@ -27,6 +28,8 @@ export const Home = () => {
     
     }
     fetchData();
+
+    return () => {controller.abort()};
   }, []);
 
   const { results: data } = dataTrendsMovies;

@@ -10,10 +10,12 @@ export const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchData() {
       try {
 
-        const data = await getReviewsFromId(movieId);
+        const data = await getReviewsFromId(movieId, controller);
         if (!data.length) {
           throw new Error("List credits movies is empty");
         }
@@ -27,6 +29,8 @@ export const Reviews = () => {
     
     }
     fetchData();
+
+    return () => {controller.abort()};
   }, [movieId]);
 
   return (

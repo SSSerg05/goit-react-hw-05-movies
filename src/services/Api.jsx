@@ -12,9 +12,8 @@ const params = {
 
 //trending for day
 // https://api.themoviedb.org/3/trending/movie/day?api_key=347a4b587b74ee2a22d09434547acda6&page=1
-export const getTrendingForDay = async () => { 
+export const getTrendingForDay = async (controller) => { 
   const url = URL + '/trending/movie/day';
-  const controller = new AbortController();
 
   const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce);
@@ -24,9 +23,8 @@ export const getTrendingForDay = async () => {
 
 //https://api.themoviedb.org/3/movie/157336?api_key=347a4b587b74ee2a22d09434547acda6
 //https://api.themoviedb.org/3/movie/157336/videos?api_key=347a4b587b74ee2a22d09434547acda6
-export const getMovieFromId = async (id) => { 
+export const getMovieFromId = async (id, controller) => { 
   const url = URL + `/movie/${id}`;
-  const controller = new AbortController();
   // console.log(url + `?api_key=${API_KEY}`);
   
   const responce = await axios.get(url, { params, signal:controller.signal });
@@ -36,9 +34,8 @@ export const getMovieFromId = async (id) => {
 
 // получить список актеров
 // https://api.themoviedb.org/3/movie/346698/credits?api_key=347a4b587b74ee2a22d09434547acda6&language=en-US
-export const getCreditsFromId = async (id) => {
+export const getCreditsFromId = async (id, controller) => {
   const url = URL + `/movie/${id}/credits`;
-  const controller = new AbortController();
 
   const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce.data.cast);
@@ -49,9 +46,8 @@ export const getCreditsFromId = async (id) => {
 
 // получить обзоры для страницы кинофильма.
 // https://api.themoviedb.org/3/movie/346698/reviews?api_key=347a4b587b74ee2a22d09434547acda6&language=en-US&page=1
-export const getReviewsFromId = async (id) => {
+export const getReviewsFromId = async (id, controller) => {
   const url = URL + `/movie/${id}/reviews`;
-  const controller = new AbortController();
   
   const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce.data.results);

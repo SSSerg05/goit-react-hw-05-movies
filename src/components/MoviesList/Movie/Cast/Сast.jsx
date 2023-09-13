@@ -10,11 +10,12 @@ export const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
 
     async function fetchDataCredits() {
       try {
 
-        const data = await getCreditsFromId(movieId);
+        const data = await getCreditsFromId(movieId, controller);
         if (!data.length) {
           throw new Error("List credits/cast movies is empty");
         }
@@ -28,6 +29,8 @@ export const Cast = () => {
     
     }
     fetchDataCredits();
+
+    return () => {controller.abort()};
   }, [movieId]);
 
 
