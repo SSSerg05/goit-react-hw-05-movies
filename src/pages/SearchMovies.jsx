@@ -1,27 +1,71 @@
-
-import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import { useSearchParams } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { Loader } from "../Loader/Loader";
 
 import { MoviesList } from "components/MoviesList/MoviesList"
-import dataTrending from "../data/trending-day.json"
+import { Searchbar } from "components/Searchbar/Searchbar";
 
 export const SearchMovies = () => { 
 
-  const [searchParams] = useSearchParams();
-  const name = searchParams.get("name");
+  const [searchQuery, setSearchQuery] = useState(null);
+  const [dataQueryMovies, setDataQueryMovies] = useState([]);
 
-  // useEffect(async () => {
-  //   //HTTP-queries
-  //   //const dataTrending = await ....
-  // }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { results: data } = dataTrending;
+  useEffect(() => {
+    if (!searchQuery) {
+      return
+    } 
+
+    const controller = new AbortController();
+    setIsLoading(true);
+
+    async function fetchData() {
+      try {
+        const data = await fetchData(searchQuery, controller);
+        if (data.hits.length === 0) {
+          throw new Error("Gallery empty");
+        }
+        
+        setDataQueryMovies(data)
+
+      } catch (error) {
+        // setError(error.message);
+        onError(error.message);
+      }
+      finally {
+        setIsLoading(false);
+      }
+      return;
+    }
+
+    fetchData();
+    return () => {controller.abort()};
+  }, [searchQuery])
+
+
+
+  const handleFormSubmit = searchQuery => {
+    setSearchQuery(searchQuery);
+  }
+
+
+  // container Toast in component Searchbar
+  const onError = (error) => {
+    toast.error(error);
+    console.log(error);
+  }
+
+  const { results: data } = dataQueryMovies;
   return (
     <div>
       <h1>Search movie</h1>
-      <input type='text'></input>
-      <button></button>
-      <p>{ name }</p>
-       <MoviesList dataList={ data } />
+      <Searchbar onSubmit={ handleFormSubmit } />
+
+      {isLoading && <Loader />}
+
+      <MoviesList dataList={ data } />
     </div>
   )
 }

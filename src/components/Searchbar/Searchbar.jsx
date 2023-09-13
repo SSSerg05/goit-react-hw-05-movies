@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 import { ImSearch } from 'react-icons/im';
 
@@ -37,9 +38,7 @@ export const Searchbar = ({ onSubmit }) => {
             name="searchQuery"
             value={ searchQuery }
             onChange={ handleChangeSearchQuery }
-            // autocomplete="off"
-            // autofocus
-            placeholder="Search images and photos: HW-4 Hook"
+            placeholder="Search title movie: HW-5 Hook"
           />
         <button className="SearchForm-button" type="submit">
           <ImSearch />
