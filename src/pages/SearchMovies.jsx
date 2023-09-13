@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // import { useSearchParams } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { Loader } from "../Loader/Loader";
+import { Loader } from "components/Loader/Loader";
 
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { Searchbar } from "components/Searchbar/Searchbar";
@@ -23,7 +23,7 @@ export const SearchMovies = () => {
 
     async function fetchData() {
       try {
-        const data = await fetchData(searchQuery, controller);
+        const data = await getMoviesFromQuery(searchQuery, controller);
         if (data.hits.length === 0) {
           throw new Error("Gallery empty");
         }
