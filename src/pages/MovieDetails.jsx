@@ -13,10 +13,12 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
   
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchData() {
       try {
 
-        const data = await getMovieFromId(movieId);
+        const data = await getMovieFromId(movieId, controller);
         if (data.length === 0) {
           throw new Error("List movies is empty");
         }

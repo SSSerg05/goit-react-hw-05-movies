@@ -10,6 +10,7 @@ export const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+
     async function fetchDataCredits() {
       try {
 

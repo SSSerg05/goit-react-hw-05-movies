@@ -14,7 +14,9 @@ const params = {
 // https://api.themoviedb.org/3/trending/movie/day?api_key=347a4b587b74ee2a22d09434547acda6&page=1
 export const getTrendingForDay = async () => { 
   const url = URL + '/trending/movie/day';
-  const responce = await axios.get(url, { params });
+  const controller = new AbortController();
+
+  const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce);
 
   return responce.data;
@@ -24,9 +26,10 @@ export const getTrendingForDay = async () => {
 //https://api.themoviedb.org/3/movie/157336/videos?api_key=347a4b587b74ee2a22d09434547acda6
 export const getMovieFromId = async (id) => { 
   const url = URL + `/movie/${id}`;
+  const controller = new AbortController();
   // console.log(url + `?api_key=${API_KEY}`);
   
-  const responce = await axios.get(url, { params });
+  const responce = await axios.get(url, { params, signal:controller.signal });
 
   return responce.data;
 }
@@ -35,8 +38,9 @@ export const getMovieFromId = async (id) => {
 // https://api.themoviedb.org/3/movie/346698/credits?api_key=347a4b587b74ee2a22d09434547acda6&language=en-US
 export const getCreditsFromId = async (id) => {
   const url = URL + `/movie/${id}/credits`;
-  
-  const responce = await axios.get(url, { params });
+  const controller = new AbortController();
+
+  const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce.data.cast);
 
   return responce.data.cast;
@@ -47,8 +51,9 @@ export const getCreditsFromId = async (id) => {
 // https://api.themoviedb.org/3/movie/346698/reviews?api_key=347a4b587b74ee2a22d09434547acda6&language=en-US&page=1
 export const getReviewsFromId = async (id) => {
   const url = URL + `/movie/${id}/reviews`;
+  const controller = new AbortController();
   
-  const responce = await axios.get(url, { params });
+  const responce = await axios.get(url, { params, signal:controller.signal });
   // console.log(responce.data.results);
 
   return responce.data.results;

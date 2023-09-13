@@ -9,6 +9,7 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   useEffect(() => {
+
     async function fetchData() {
       try {
 
@@ -22,9 +23,6 @@ export const Home = () => {
 
       } catch (error) {
         console.log(error);
-        // console.log("Use local Database TrendingForDay");
-        // setDataTrensMovies(testDataTrending);
-        // setIsLoading(true);
       }
     
     }
