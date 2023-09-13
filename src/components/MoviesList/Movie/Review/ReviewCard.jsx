@@ -10,7 +10,7 @@ export const ReviewCard = ({ data }) => {
     <div>
       <h2>{author}</h2>
       <p>{ content }</p>
-      <p>{ url }</p>         
+      <a href={ url }  target="_blank" rel="noreferrer nofollow noopener">{ url }</a>         
     </div>
   )
 }
