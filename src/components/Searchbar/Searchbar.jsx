@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +9,9 @@ import { ImSearch } from 'react-icons/im';
 
 export const Searchbar = ({ onSubmit }) => { 
 
-  const[searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useSearchParams();
+  const query = searchQuery.get('query') ?? '';
+
 
 
   const handleChangeSearchQuery = event => {
@@ -37,7 +40,10 @@ export const Searchbar = ({ onSubmit }) => {
             type="text"
             name="searchQuery"
             value={ searchQuery }
-            onChange={ handleChangeSearchQuery }
+            onChange={ event => { 
+              searchQuery.set('query', event.target.value);
+              setSearchQuery(searchQuery);
+            }}
             placeholder="Search title movie: HW-5 Hook"
           />
         <button className="SearchForm-button" type="submit">

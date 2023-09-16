@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { useSearchParams } from "react-router-dom";
+
 import { toast } from 'react-toastify';
 import { Loader } from "components/Loader/Loader";
 
@@ -9,7 +9,6 @@ import { Searchbar } from "components/Searchbar/Searchbar";
 
 export const SearchMovies = () => { 
 
-  const [searchQuery, setSearchQuery] = useState(null);
   const [dataQueryMovies, setDataQueryMovies] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
