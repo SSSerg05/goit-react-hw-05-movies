@@ -13,42 +13,42 @@ export const SearchMovies = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!searchQuery) {
-      return
-    } 
+  // useEffect(() => {
+  //   if (!searchQuery) {
+  //     return
+  //   } 
 
-    const controller = new AbortController();
-    setIsLoading(true);
+  //   const controller = new AbortController();
+  //   setIsLoading(true);
 
-    async function fetchData() {
-      try {
-        const data = await getMoviesFromQuery(searchQuery, controller);
-        if (data.hits.length === 0) {
-          throw new Error("Gallery empty");
-        }
+  //   async function fetchData() {
+  //     try {
+  //       const data = await getMoviesFromQuery(searchQuery, controller);
+  //       if (data.hits.length === 0) {
+  //         throw new Error("Gallery empty");
+  //       }
         
-        setDataQueryMovies(data)
+  //       setDataQueryMovies(data)
 
-      } catch (error) {
-        // setError(error.message);
-        onError(error.message);
-      }
-      finally {
-        setIsLoading(false);
-      }
-      return;
-    }
+  //     } catch (error) {
+  //       // setError(error.message);
+  //       onError(error.message);
+  //     }
+  //     finally {
+  //       setIsLoading(false);
+  //     }
+  //     return;
+  //   }
 
-    fetchData();
-    return () => {controller.abort()};
-  }, [searchQuery])
+  //   fetchData();
+  //   return () => {controller.abort()};
+  // }, [searchQuery])
 
 
 
-  const handleFormSubmit = searchQuery => {
-    setSearchQuery(searchQuery);
-  }
+  // const handleFormSubmit = searchQuery => {
+  //   setSearchQuery(searchQuery);
+  // }
 
 
   // container Toast in component Searchbar
@@ -61,7 +61,8 @@ export const SearchMovies = () => {
   return (
     <div>
       <h1>Search movie</h1>
-      <Searchbar onSubmit={ handleFormSubmit } />
+      <Searchbar /> 
+      {/* onSubmit={ handleFormSubmit } /> */}
 
       {isLoading && <Loader />}
 
