@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 
 import {getReviewsFromId} from "../../../../services/Api"
 import { ReviewsList } from "./ReviewList";
-import { Title } from "./Reviews.styled";
-import { Header } from "components/SharedLayout.styled";
+import { Header, Title } from "./Reviews.styled";
 
 
 export const Reviews = () => {

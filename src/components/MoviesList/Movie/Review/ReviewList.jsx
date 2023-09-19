@@ -1,4 +1,5 @@
 import { ReviewCard } from "./ReviewCard";
+import { List, Item } from "./Reviews.styled";
 
 export const ReviewsList = ({ dataList }) => {
   if(!dataList.length) {
@@ -6,14 +7,14 @@ export const ReviewsList = ({ dataList }) => {
   }
 
   return (
-    <ul>
+    <List>
       {dataList.map(review => {
         return (
-          <li key={review.id}>
+          <Item key={review.id}>
             <ReviewCard data={review}/>
-          </li>
+          </Item>
         )
     })}
-    </ul>
+    </List>
   )
 }

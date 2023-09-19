@@ -1,3 +1,4 @@
+import { Author,  } from "./Reviews.styled";
 
 export const ReviewCard = ({ data }) => {
   const {author, content, url} = data;

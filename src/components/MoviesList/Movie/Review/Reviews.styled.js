@@ -15,3 +15,17 @@ export const Title = styled.h2`
   font-weight: 700;
   text-align: left;
 `;
+
+export const List = styled.ul`
+
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+`;
+
+export const Item = styled.li`
+
+    :nth-child(even) {
+      background: rgba(0,0,0,.2);
+    }
+`;
