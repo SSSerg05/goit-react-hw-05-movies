@@ -1,53 +1,20 @@
 import { useSearchParams } from "react-router-dom";
 // import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import { getMoviesFromQuery } from "../../services/Api";
 
 
-import { ImSearch } from 'react-icons/im';
+// import { getMoviesFromQuery } from "../../services/Api";
 
-//export const Searchbar = () => { 
-export const Searchbar = ({ onSubmit }) => { 
+
+
+
+export const Searchbar = () => { 
+// export const Searchbar = ({ onSubmit }) => { 
 
   const [searchQuery, setSearchQuery] = useSearchParams();
   const query = searchQuery.get('query') ?? '';
-  console.log(query);
 
-  const handleSubmit = event => { 
-    event.preventDefault();
-
-    onSubmit(searchQuery);
-    setSearchQuery({ query: "" });
-  }
-
-  const onSearch = async () => { 
-    const query = searchQuery.get('query') ?? '';
-    const controller = new AbortController();
-    
-    try {
-        const data = await getMoviesFromQuery(query, controller);
-        if (data.hits.length === 0) {
-          throw new Error("Gallery empty");
-        }
-
-        console.log('data', data);
-
-    } catch (error) {
-        console.log(error.message);
-        // setError(error.message);
-        // onError(error.message);
-    }
-    finally {
-      // setIsLoading(false);
-    }
-
-    setSearchQuery({ query: '' });
-  }
-
-  return (
-    <div className="Searchbar">
+    return (
+    <>
       <input
         className="SearchForm-input"
         type="text"
@@ -59,13 +26,7 @@ export const Searchbar = ({ onSubmit }) => {
         }}
         placeholder="Search title movie: HW-5 Hook"
       />
-      <button onClick={onSearch}>
-        <ImSearch />
-      </button>
-      <ToastContainer
-        autoClose={2500}
-        theme="colored"/>
-    </div>
+    </>
   )
   
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 export const MoviesList = ({ dataList }) => {
-  console.log("dataList ",dataList);
+
   if(!dataList || !dataList.length) {
     return null;
   }

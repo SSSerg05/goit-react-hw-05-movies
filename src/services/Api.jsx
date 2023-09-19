@@ -59,8 +59,10 @@ export const getReviewsFromId = async (id, controller) => {
 //search
 // https://api.themoviedb.org/3/search/movie?query=Batman&api_key=347a4b587b74ee2a22d09434547acda6
 export const getMoviesFromQuery = async (strQuery, controller) => { 
-  const query = `${URL}`;
-  const responce = await axios.get(query, {params, signal:controller.signal });
+  const query = `${URL}/search/movie?query=${strQuery}`;
+  const responce = await axios.get(query, { params, signal:controller.signal });
+  console.log(responce);
+  console.log(responce.data);
 
   return responce.data;
 }

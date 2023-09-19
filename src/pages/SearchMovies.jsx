@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-import { toast } from 'react-toastify';
+import { ImSearch } from 'react-icons/im';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from "components/Loader/Loader";
 
 import { getMoviesFromQuery } from "../services/Api";
@@ -10,48 +13,34 @@ import { Searchbar } from "components/Searchbar/Searchbar";
 export const SearchMovies = () => { 
 
   const [dataQueryMovies, setDataQueryMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState([]);
+  // const [searchQuery, setSearchQuery] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputQuery] = useSearchParams();
 
-  useEffect(() => {
-    if (!searchQuery) {
-      return
-    } 
+
+  const onSearch = async () => {
+    const query = inputQuery.get('query') ?? '';
+    console.log(query);
 
     const controller = new AbortController();
     setIsLoading(true);
 
-    async function fetchData() {
-      try {
-        const data = await getMoviesFromQuery(searchQuery, controller);
-        if (data.hits.length === 0) {
-          throw new Error("Gallery empty");
-        }
-        
-        setDataQueryMovies(data)
-        console.log('data', data);
+    try {
+      const data = await getMoviesFromQuery(query, controller);
+      if (data.results.length === 0) {
+        throw new Error("Gallery empty");
+      }
+      
+      setDataQueryMovies(data)
 
-      } catch (error) {
-        console.log(error.message);
-        // setError(error.message);
-        onError(error.message);
-      }
-      finally {
-        setIsLoading(false);
-      }
-      return;
+    } catch (error) {
+      console.log(error.message);
+      onError(error.message);
     }
-
-    fetchData();
-    return () => {controller.abort()};
-  }, [searchQuery])
-
-
-
-  const handleFormSubmit = searchQuery => {
-    setSearchQuery(searchQuery);
+    finally {
+      setIsLoading(false);
+    }
   }
-
 
   // container Toast in component Searchbar
   const onError = (error) => {
@@ -63,11 +52,19 @@ export const SearchMovies = () => {
   return (
     <div>
       <h1>Search movie</h1>
-      <Searchbar onSubmit={ handleFormSubmit } />
+      <div>
+        <Searchbar /> 
+        <button onClick={onSearch}>
+          <ImSearch />
+        </button>
+      </div>
 
       {isLoading && <Loader />}
 
       <MoviesList dataList={ data } />
+      <ToastContainer
+        autoClose={2500}
+        theme="colored"/>
     </div>
   )
 }
