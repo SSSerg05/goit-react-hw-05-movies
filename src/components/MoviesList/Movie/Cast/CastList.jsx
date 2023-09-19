@@ -1,5 +1,5 @@
 import { CastCard } from "./CastCard"
-
+import { List } from "./Cast.styled";
 
 export const CastList = ({ dataList }) => {
   if(!dataList.length) {
@@ -7,7 +7,7 @@ export const CastList = ({ dataList }) => {
   }
 
   return (
-    <ul>
+    <List>
       {dataList.map(cast => {
         return (
           <li key={cast.id}>
@@ -15,6 +15,6 @@ export const CastList = ({ dataList }) => {
           </li>
         )
     })}
-    </ul>
+    </List>
   )
 }

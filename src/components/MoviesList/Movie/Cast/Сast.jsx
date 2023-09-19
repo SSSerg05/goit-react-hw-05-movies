@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import {getCreditsFromId} from "../../../../services/Api"
 import { CastList } from "./CastList";
+import { Header, Title } from "./Cast.styled";
+
 
 export const Cast = () => {
   const {movieId} = useParams();
@@ -36,8 +38,12 @@ export const Cast = () => {
 
   return (
     <div>
-      <h2>Cast</h2>
+      <Header>
+        <Title>Cast</Title>
+      </Header>
+
       { isLoading && (<CastList dataList={ [...dataMovieCredits].slice(0, 10) } />) }
+
     </div>
   )
 

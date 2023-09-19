@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 import {getReviewsFromId} from "../../../../services/Api"
 import { ReviewsList } from "./ReviewList";
-import {  } from "./Reviews.styled";
+import { Title } from "./Reviews.styled";
+import { Header } from "components/SharedLayout.styled";
 
 
 export const Reviews = () => {
@@ -37,7 +38,9 @@ export const Reviews = () => {
 
   return (
     <div>
-      <h2>Review</h2>
+      <Header>
+        <Title>Review</Title>
+      </Header>
       { isLoading && (
         <div>
           <ReviewsList dataList={ dataMovieReviews } />
