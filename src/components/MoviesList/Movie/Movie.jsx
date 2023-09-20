@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { Genres } from "./Genres"
+import { Card, Link } from "./Movie.styled";
 
 
 export const Movie = ({ movie }) => {
@@ -10,7 +11,7 @@ export const Movie = ({ movie }) => {
   return (
     <div> 
       <Link to='/'>Back Home</Link>
-      <div>
+      <Card>
         <div>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
         </div>
@@ -22,7 +23,7 @@ export const Movie = ({ movie }) => {
           <Genres genres={ movie.genres } />
           
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

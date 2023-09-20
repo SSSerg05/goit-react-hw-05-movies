@@ -18,7 +18,7 @@ export const Header = styled.header`
 
 export const List = styled.ul`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 12px;
@@ -44,4 +44,8 @@ export const Character = styled.h3`
   font-size: 18px;
   font-weight: 700;
   text-align: center;
+`;
+
+export const Card = styled.div`
+  width: 200px;
 `;

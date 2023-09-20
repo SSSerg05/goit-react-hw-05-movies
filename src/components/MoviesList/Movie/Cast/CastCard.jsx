@@ -1,4 +1,4 @@
-import { Name, Character } from "./Cast.styled.js";
+import { Name, Character, Card } from "./Cast.styled.js";
 
 
 export const CastCard = ({ dataCast }) => {
@@ -9,11 +9,11 @@ export const CastCard = ({ dataCast }) => {
 
   // https://image.tmdb.org/t/p/w200/euDPyqLnuwaWMHajcU3oZ9uZezR.jpg
   return (
-    <div>
+    <Card>
       <img src={`https://image.tmdb.org/t/p/w200${profile_path}`} alt={`${name}/${character}`} />
       <Name>{ name }</Name>
       <Character>{ character }</Character>
-    </div>
+    </Card>
   )
 
 } 
