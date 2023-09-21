@@ -20,8 +20,6 @@ export const SearchMovies = () => {
 
   const onSearch = async () => {
     const query = inputQuery.get('query') ?? '';
-    console.log(query);
-
     const controller = new AbortController();
     setIsLoading(true);
 
@@ -40,7 +38,7 @@ export const SearchMovies = () => {
     finally {
       setIsLoading(false);
     }
-    
+
     return () => {controller.abort()}
   }
 

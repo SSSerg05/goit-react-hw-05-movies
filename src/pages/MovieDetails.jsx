@@ -38,7 +38,7 @@ export const MovieDetails = () => {
 
   return (
     <>
-      { isLoading && (<Movie movie={dataMovie} />) }
+      { isLoading && (<Movie movie={dataMovie} state={{from: location}}/>) }
 
       <Outlet />
     </>

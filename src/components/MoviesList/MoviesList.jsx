@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const MoviesList = ({ dataList }) => {
+  const location = useLocation();
 
   if(!dataList || !dataList.length) {
     return null;
@@ -11,7 +12,7 @@ export const MoviesList = ({ dataList }) => {
       {dataList.map(movie => {
         return (
           <li key={movie.id}>
-            <Link to={`${movie.id}`}>
+            <Link to={`${movie.id}`} state={{state: location}}>
               {movie.original_title}
             </Link> 
           </li>

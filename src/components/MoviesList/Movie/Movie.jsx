@@ -10,7 +10,9 @@ export const Movie = ({ movie }) => {
   console.log(location);
   
   const realease_year = new Date(movie.release_date).getFullYear();
-  const backLinkHref = location.state?.from ?? "/";
+  // const backLinkHref = location.state?.from ?? "/movies";
+  let backLinkHref = location.state?.pathname ?? + '/';
+  backLinkHref += location.state?.search
 
 
   return (
