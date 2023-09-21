@@ -18,3 +18,10 @@ export const Link = styled(NavLink)`
     color: orangered;
   }
 `;
+
+export const List = styled.ul`
+
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+`;

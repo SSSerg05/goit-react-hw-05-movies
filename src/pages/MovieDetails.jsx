@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, useLocation, Outlet } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
 import { Movie } from "../components/MoviesList/Movie/Movie";
@@ -11,6 +11,8 @@ export const MovieDetails = () => {
   const [dataMovie, setDataMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
+  const location = useLocation();
+  console.log(location);
   
   useEffect(() => {
     const controller = new AbortController();
@@ -28,10 +30,6 @@ export const MovieDetails = () => {
 
       } catch (error) {
         console.log(error);
-
-        console.log("Use local Database movie with id=346698");
-        // setDataMovie(testDataMovie);
-        // setIsLoading(true);
       }
     
     }
@@ -42,14 +40,6 @@ export const MovieDetails = () => {
     <>
       { isLoading && (<Movie movie={dataMovie} />) }
 
-      <ul>
-        <li>
-          <Link to='cast'>Cast:</Link>
-        </li>
-        <li>
-          <Link to='reviews'>Reviews:</Link>
-        </li>
-      </ul>
       <Outlet />
     </>
   );

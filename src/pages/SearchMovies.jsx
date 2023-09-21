@@ -40,6 +40,8 @@ export const SearchMovies = () => {
     finally {
       setIsLoading(false);
     }
+    
+    return () => {controller.abort()}
   }
 
   // container Toast in component Searchbar
