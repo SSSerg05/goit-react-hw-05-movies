@@ -3,6 +3,7 @@ import { useParams, useLocation, Outlet } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
 import { Movie } from "../components/MoviesList/Movie/Movie";
+import { GoBack } from "./MovieDetails.styled";
 // import { testDataMovie } from "../data/movie-id-346698.json"; 
 
 
@@ -12,7 +13,7 @@ export const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
+  console.log('MovieDetail', location);
   
   useEffect(() => {
     const controller = new AbortController();
@@ -36,9 +37,11 @@ export const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
+  const backLinkHref = location.state?.from ?? "/movies";
   return (
     <>
-      { isLoading && (<Movie movie={dataMovie} state={{from: location}}/>) }
+      <GoBack to={backLinkHref}>Go Back</GoBack>
+      {isLoading && (<Movie movie={dataMovie} state={{ from: location }} />) }
 
       <Outlet />
     </>

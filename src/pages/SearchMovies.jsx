@@ -10,6 +10,7 @@ import { getMoviesFromQuery } from "../services/Api";
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { Searchbar } from "components/Searchbar/Searchbar";
 
+
 export const SearchMovies = () => { 
 
   const [dataQueryMovies, setDataQueryMovies] = useState([]);
@@ -53,7 +54,7 @@ export const SearchMovies = () => {
     <div>
       <h1>Search movie</h1>
       <div>
-        <Searchbar /> 
+        <Searchbar onChange={ onSearch } /> 
         <button onClick={onSearch}>
           <ImSearch />
         </button>

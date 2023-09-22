@@ -14,7 +14,7 @@ export const Link = styled(NavLink)`
   color: black;
   font-weight: 500;
 
-  &.focus, &.active {
+  &.focus, &.active, &.hover {
     color: orangered;
   }
 `;

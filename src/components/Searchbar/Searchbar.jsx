@@ -1,13 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 
-// import { getMoviesFromQuery } from "../../services/Api";
-
-
-
-
-export const Searchbar = () => { 
+export const Searchbar = ({ onChange }) => { 
 // export const Searchbar = ({ onSubmit }) => { 
 
   const [searchQuery, setSearchQuery] = useSearchParams();
@@ -18,8 +13,7 @@ export const Searchbar = () => {
       <input
         className="SearchForm-input"
         type="text"
-        name="searchQuery"
-        value={ query }
+        value={query}
         onChange={ event => { 
           searchQuery.set('query', event.target.value.toLowerCase());
           setSearchQuery(searchQuery);
@@ -31,7 +25,6 @@ export const Searchbar = () => {
   
 }
 
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   searchQuery : PropTypes.string,
-// };
+Searchbar.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
