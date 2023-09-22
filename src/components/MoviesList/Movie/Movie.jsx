@@ -1,3 +1,4 @@
+import { lazy } from "react"
 
 import { Genres } from "./Genres"
 import { Card, ContainerImg, Link, List } from "./Movie.styled";
@@ -11,7 +12,11 @@ export const Movie = ({ movie }) => {
   return (
     <Card>
       <ContainerImg>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.original_title}
+          loading="lazy"
+        />
       </ContainerImg>
 
       <div>
