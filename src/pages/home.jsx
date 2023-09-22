@@ -8,6 +8,7 @@ import { MoviesList } from "../components/MoviesList/MoviesList";
 
 export const Home = () => { 
   const [dataTrendsMovies, setDataTrensMovies] = useState([]);
+   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   
   useEffect(() => {
@@ -15,6 +16,9 @@ export const Home = () => {
 
     async function fetchData() {
       try {
+
+        setLoading(true);
+        setError(false);
 
         const data = await getTrendingForDay(controller);
         if (!data.results.length) {
@@ -25,6 +29,7 @@ export const Home = () => {
         setLoading(true);
 
       } catch (error) {
+        setError(true);
         // console.log(error);
       }
       finally { 
@@ -37,13 +42,16 @@ export const Home = () => {
     return () => {controller.abort()};
   }, []);
 
+
   const { results: data } = dataTrendsMovies;
   return (
     <main>
       {loading && <Loader />}
 
       <h1>Trending movies for day</h1>
-      { data?.length && (<MoviesList dataList={data} /> ) }
+      {/* { error && !loading && (<h2>No data in trendind movies for day</h2>) } */}
+     
+      <MoviesList dataList={data} />
     </main>
   )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 
 // import { ImSearch } from 'react-icons/im';
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,14 +17,14 @@ export const SearchMovies = () => {
   // const [strQuery, setStrQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [inputQuery] = useSearchParams();
+  const [inputQuery, setInputQuery] = useSearchParams();
 
-
+  const location = useLocation()
  //==========================
   useEffect(() => {
     const query = inputQuery.get('query') ?? '';
     if (!query) {
-      return
+      setInputQuery("");
     }
 
     const controller = new AbortController();
@@ -42,7 +42,7 @@ export const SearchMovies = () => {
         setDataQueryMovies(data)
       } catch (error) {
         setError(true);
-        onError(error.message);
+        // onError(error.message);
       }
       finally {
         setLoading(false);
@@ -56,25 +56,20 @@ export const SearchMovies = () => {
 
 
   // container Toast in component Searchbar
-  const onError = (error) => {
-    toast.error(error);
-  }
+  // const onError = (error) => {
+  //   // toast.error(error);
+  // }
 
   const { results: data } = dataQueryMovies;
   return (
     <div>
       <h1>Search movie</h1>
-      <div>
-        <Searchbar /> 
-        {/* <button onClick={onSearch}>
-          <ImSearch />
-        </button> */}
-      </div>
+      <Searchbar /> 
 
       {loading && <Loader />}
-      { error && !loading && (<div>Wrong query. No data</div>) }
+      {/* { error && !loading && (<div>Wrong query. No data</div>) } */}
 
-      {data && data.length && (<MoviesList dataList={data} />)}
+      <MoviesList dataList={data} />
       
       <ToastContainer
         autoClose={2500}

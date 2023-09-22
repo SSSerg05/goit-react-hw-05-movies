@@ -29,3 +29,7 @@ export const List = styled.ul`
   margin-left: 0;
   padding-left: 0;
 `;
+
+export const ContainerImg = styled.div`
+  min-width: 500px;
+`

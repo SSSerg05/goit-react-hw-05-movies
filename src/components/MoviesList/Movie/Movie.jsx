@@ -1,6 +1,6 @@
 
 import { Genres } from "./Genres"
-import { Card, Link, List } from "./Movie.styled";
+import { Card, ContainerImg, Link, List } from "./Movie.styled";
 
 
 export const Movie = ({ movie }) => {
@@ -10,9 +10,9 @@ export const Movie = ({ movie }) => {
 
   return (
     <Card>
-      <div>
+      <ContainerImg>
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
-      </div>
+      </ContainerImg>
 
       <div>
         <h1>{movie.original_title} ({realease_year})</h1>
