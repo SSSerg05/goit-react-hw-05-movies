@@ -1,5 +1,3 @@
-import { lazy } from "react"
-
 import { Genres } from "./Genres"
 import { Card, ContainerImg, Link, List } from "./Movie.styled";
 
