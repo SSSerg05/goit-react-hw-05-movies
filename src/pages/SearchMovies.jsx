@@ -52,7 +52,7 @@ export const SearchMovies = () => {
     fetchData();
 
     return () => {controller.abort()};
-  }, []);
+  }, [inputQuery]);
 
 
   // container Toast in component Searchbar

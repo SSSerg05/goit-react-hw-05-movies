@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { Loader } from "components/Loader/Loader";
+
 import { getTrendingForDay } from "../services/Api";
 import { MoviesList } from "../components/MoviesList/MoviesList";
 // import { testDataTrending} from "../data/trending-day.json";
 
 export const Home = () => { 
   const [dataTrendsMovies, setDataTrensMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   useEffect(() => {
     const controller = new AbortController();
@@ -15,15 +17,18 @@ export const Home = () => {
       try {
 
         const data = await getTrendingForDay(controller);
-        if ( !data.results.length ) {
+        if (!data.results.length) {
           throw new Error("List movies is empty");
         }
 
         setDataTrensMovies(data);
-        setIsLoading(true);
+        setLoading(true);
 
       } catch (error) {
         // console.log(error);
+      }
+      finally { 
+        setLoading(false);
       }
     
     }
@@ -35,8 +40,10 @@ export const Home = () => {
   const { results: data } = dataTrendsMovies;
   return (
     <main>
+      {loading && <Loader />}
+
       <h1>Trending movies for day</h1>
-      { isLoading && (<MoviesList dataList={data} /> ) }
+      { data?.length && (<MoviesList dataList={data} /> ) }
     </main>
   )
 }
