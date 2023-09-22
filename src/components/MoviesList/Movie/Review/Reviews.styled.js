@@ -16,6 +16,12 @@ export const Title = styled.h2`
   text-align: left;
 `;
 
+export const Author = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+`;
+
 export const List = styled.ul`
 
   list-style: none;

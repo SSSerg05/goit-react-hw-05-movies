@@ -9,9 +9,13 @@ export const ReviewCard = ({ data }) => {
 
    return (
     <div>
-      <h2>{author}</h2>
+      <Author>{author}</Author>
       <p>{ content }</p>
-      <a href={ url }  target="_blank" rel="noreferrer nofollow noopener">{ url }</a>         
+       <a
+         href={url}
+         target="_blank"
+         rel="noreferrer nofollow noopener">{url}
+       </a>         
     </div>
   )
 }
