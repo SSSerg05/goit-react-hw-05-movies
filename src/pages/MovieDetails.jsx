@@ -13,7 +13,7 @@ export const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
-  console.log('MovieDetail', location);
+  // console.log('MovieDetail', location);
   
   useEffect(() => {
     const controller = new AbortController();
@@ -41,7 +41,7 @@ export const MovieDetails = () => {
   return (
     <>
       <GoBack to={backLinkHref}>Go Back</GoBack>
-      {isLoading && (<Movie movie={dataMovie} state={{ from: location }} />) }
+      {isLoading && (<Movie movie={dataMovie} />) }
 
       <Outlet />
     </>

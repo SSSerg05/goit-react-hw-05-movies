@@ -26,7 +26,7 @@ export const Reviews = () => {
         setIsLoading(true);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     
     }

@@ -1,8 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import PropTypes from 'prop-types';
 
 
-export const Searchbar = ({ onChange }) => { 
+export const Searchbar = () => { 
 // export const Searchbar = ({ onSubmit }) => { 
 
   const [searchQuery, setSearchQuery] = useSearchParams();
@@ -24,7 +23,3 @@ export const Searchbar = ({ onChange }) => {
   )
   
 }
-
-Searchbar.propTypes = {
-  onChange: PropTypes.func.isRequired,
-};

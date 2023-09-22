@@ -8,7 +8,11 @@ export const GoBack = styled(Link)`
   color: black;
   font-weight: 500;
 
-  &.focus, &.active, &.hover {
+  &:hover,
+  &:focus {
     color: orangered;
+  }
+  &:active {
+    color: red;
   }
 `;

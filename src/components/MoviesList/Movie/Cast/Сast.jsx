@@ -26,7 +26,7 @@ export const Cast = () => {
         setIsLoading(true);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     
     }
