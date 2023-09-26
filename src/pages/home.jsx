@@ -8,7 +8,7 @@ import { MoviesList } from "../components/MoviesList/MoviesList";
 
 export const Home = () => { 
   const [dataTrendsMovies, setDataTrensMovies] = useState([]);
-   const [error, setError] = useState(false);
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   
   useEffect(() => {
@@ -29,8 +29,10 @@ export const Home = () => {
         setLoading(true);
 
       } catch (error) {
-        setError(true);
-        // console.log(error);
+        console.log(error);
+        if (error.message !== 'canceled') {
+          setError(true);
+        }
       }
       finally { 
         setLoading(false);
@@ -49,9 +51,9 @@ export const Home = () => {
       {loading && <Loader />}
 
       <h1>Trending movies for day</h1>
-      {/* { error && !loading && (<h2>No data in trendind movies for day</h2>) } */}
+      { error && !loading && (<h2>No data in trendind movies for day</h2>) }
      
-      <MoviesList dataList={data} />
+      { !error && (<MoviesList dataList={data} />)}
     </main>
   )
 }

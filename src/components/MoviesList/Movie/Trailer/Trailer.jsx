@@ -8,7 +8,7 @@ export const Trailer = () => {
   const {movieId} = useParams();
   const [dataMovieTrailer, setDataMovieTrailer] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [error, setError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
 
@@ -16,6 +16,7 @@ export const Trailer = () => {
       try {
 
         const data = await getTrailerFromMovieId(movieId, controller);
+        console.log(data);
         if (!data.length) {
           throw new Error("Official trailer not found");
         }
@@ -24,7 +25,7 @@ export const Trailer = () => {
         setIsLoading(true);
 
       } catch (error) {
-        // console.log(error);
+        console.log(error);
       }
     
     }
@@ -33,10 +34,11 @@ export const Trailer = () => {
     return () => {controller.abort()};
   }, [movieId]);
 
-  const { key } = dataMovieTrailer[0];
+  const { key } = dataMovieTrailer??[0];
   return (
     <>
-      {isLoading && (
+      {error && !dataMovieTrailer[0] && (<h2>{error.message}</h2>)} 
+      {!error && isLoading && (
         <a
           href={`https://www.youtube.com/watch?v=${key}`}
           target='_blank'>
