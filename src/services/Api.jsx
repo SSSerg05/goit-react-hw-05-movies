@@ -77,8 +77,7 @@ export const getTrailerFromMovieId = async (id, controller) => {
   const url = URL + `/movie/${id}/videos`;
   
   const responce = await axios.get(url, { params, signal: controller.signal });
-  console.log(responce.data.results);
-
+  // console.log(responce.data.results);
 
   return responce.data.results.filter(item => item.name === "Official Trailer");
 };
