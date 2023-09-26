@@ -25,13 +25,16 @@ export const Trailer = () => {
         }
 
         setDataMovieTrailer(data);
-        setIsLoading(true);
+        setLoading(true);
 
       } catch (error) {
         console.log(error);
         if (error.message !== 'canceled') {
           setError(error);
         }
+      }
+      finally { 
+        setLoading(false);
       }
     
     }
