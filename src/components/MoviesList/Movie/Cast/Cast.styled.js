@@ -48,4 +48,10 @@ export const Character = styled.h3`
 
 export const Card = styled.div`
   width: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 `;
+
+export const Img = styled.img`
+ width: 200px;
+ height: 300px;
+`

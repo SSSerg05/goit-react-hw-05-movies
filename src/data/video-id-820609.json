@@ -1,0 +1,65 @@
+{
+  "id": 820609,
+  "results": [
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Official Clip - 'UFO Sighting'",
+      "key": "tWvMXkmkpkE",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Clip",
+      "official": true,
+      "published_at": "2023-09-20T19:00:23.000Z",
+      "id": "650db3f5d34eb300ad05f36a"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Official Clip - 'Telephone'",
+      "key": "7xbU-fE1OoA",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Clip",
+      "official": true,
+      "published_at": "2023-09-18T22:08:29.000Z",
+      "id": "6508d0c98261ee011c53eef3"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Official Clip",
+      "key": "c77AG6akEtw",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Clip",
+      "official": true,
+      "published_at": "2023-09-16T19:00:19.000Z",
+      "id": "6508a8218c0a480100d04a80"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Brynn",
+      "key": "CvzlxfEz4hQ",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Featurette",
+      "official": true,
+      "published_at": "2023-09-13T22:00:18.000Z",
+      "id": "6502385defea7a00e0360f7c"
+    },
+    {
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "name": "Official Trailer",
+      "key": "IcA02w6rm44",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer",
+      "official": true,
+      "published_at": "2023-09-05T18:12:47.000Z",
+      "id": "64f770aa5f2b8d00e12d5d1a"
+    }
+  ]
+}

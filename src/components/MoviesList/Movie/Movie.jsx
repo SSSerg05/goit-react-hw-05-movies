@@ -1,5 +1,6 @@
 import { Genres } from "./Genres"
 import { Card, ContainerImg, Link, List } from "./Movie.styled";
+import { Trailer } from "./Trailer/Trailer";
 
 
 export const Movie = ({ movie }) => {
@@ -22,6 +23,7 @@ export const Movie = ({ movie }) => {
         <p>Vote: {movie.vote_average}</p>
         <h2>Overview</h2>
         <p>{movie.overview}</p>
+        <Trailer />
         <Genres genres={movie.genres} />
 
         <List>

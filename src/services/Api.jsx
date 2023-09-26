@@ -70,3 +70,15 @@ getMoviesFromQuery.propTypes = {
   strQuery: PropTypes.string.isRequired,
   controller: PropTypes.object.isRequired,
 };
+
+// video for movie
+// 'https://api.themoviedb.org/3/movie/820609/videos?language=en-US' \
+export const getTrailerFromMovieId = async (id, controller) => {
+  const url = URL + `/movie/${id}/videos`;
+  
+  const responce = await axios.get(url, { params, signal: controller.signal });
+  console.log(responce.data.results);
+
+
+  return responce.data.results.filter(item => item.name === "Official Trailer");
+};

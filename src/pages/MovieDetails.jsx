@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense  } from "react";
 import { useParams, useLocation, Outlet } from "react-router-dom";
 import { getMovieFromId } from "../services/Api";
 
@@ -13,8 +13,8 @@ export const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
-  // console.log('MovieDetail', location);
-  
+
+  // Movie from Id
   useEffect(() => {
     const controller = new AbortController();
 
@@ -42,8 +42,11 @@ export const MovieDetails = () => {
     <>
       <GoBack to={backLinkHref}>Go Back</GoBack>
       {isLoading && (<Movie movie={dataMovie} />) }
-
-      <Outlet />
+      <Suspense fallback={<div>LOADING Subpage...</div>}>
+        <Outlet />
+      </Suspense>  
     </>
   );
 }
+
+export default MovieDetails;

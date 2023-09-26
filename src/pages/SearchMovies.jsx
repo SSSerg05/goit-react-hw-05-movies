@@ -77,3 +77,5 @@ export const SearchMovies = () => {
     </div>
   )
 }
+
+export default SearchMovies;
