@@ -7,11 +7,13 @@ import {getTrailerFromMovieId} from "../../../../services/Api"
 export const Trailer = () => {
   const {movieId} = useParams();
   const [dataMovieTrailer, setDataMovieTrailer] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  
+
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
+    setError(false);
 
     async function fetchData() {
       try {
@@ -28,7 +30,7 @@ export const Trailer = () => {
       } catch (error) {
         console.log(error);
         if (error.message !== 'canceled') {
-          setError(true);
+          setError(error);
         }
       }
     
@@ -42,7 +44,7 @@ export const Trailer = () => {
   return (
     <>
       {error && !dataMovieTrailer[0] && (<h2>{error.message}</h2>)} 
-      {!error && isLoading && (
+      {!error && loading && (
         <a
           href={`https://www.youtube.com/watch?v=${key}`}
           rel="noreferrer, noopener"
