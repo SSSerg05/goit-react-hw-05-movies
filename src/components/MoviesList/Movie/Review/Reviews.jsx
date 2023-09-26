@@ -9,10 +9,13 @@ import { Header, Title } from "./Reviews.styled";
 export const Reviews = () => {
   const {movieId} = useParams();
   const [dataMovieReviews, setDataMovieReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
+    setError(false);
 
     async function fetchData() {
       try {
@@ -23,10 +26,16 @@ export const Reviews = () => {
         }
 
         setDataMovieReviews(data);
-        setIsLoading(true);
+        setLoading(true);
 
       } catch (error) {
         // console.log(error);
+        if (error.message !== 'canceled') {
+          setError(error);
+        }
+      }
+      finally { 
+        setLoading(false);
       }
     
     }
@@ -40,7 +49,8 @@ export const Reviews = () => {
       <Header>
         <Title>Review</Title>
       </Header>
-      { isLoading && (
+      { error && !loading && (<h2>{ error.message }</h2>) }
+      { !error && !loading && (
         <div>
           <ReviewsList dataList={ dataMovieReviews } />
         </div>

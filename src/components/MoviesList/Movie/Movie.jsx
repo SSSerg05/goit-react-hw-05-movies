@@ -4,8 +4,7 @@ import { Trailer } from "./Trailer/Trailer";
 
 
 export const Movie = ({ movie }) => {
- 
- 
+
   const realease_year = new Date(movie.release_date).getFullYear();
 
   return (

@@ -52,7 +52,7 @@ export const Home = () => {
       {loading && <Loader />}
 
       <h1>Trending movies for day</h1>
-      { error && !loading && (<h2>No data in trendind movies for day</h2>) }
+      {error && !loading && (<h2>No data in trendind movies for day. { error.message }</h2>) }
      
       { !error && (<MoviesList dataList={data} />)}
     </main>

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 // import { ImSearch } from 'react-icons/im';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from "components/Loader/Loader";
 
@@ -19,7 +18,7 @@ export const SearchMovies = () => {
   const [error, setError] = useState(false);
   const [inputQuery, setInputQuery] = useSearchParams();
 
-  const location = useLocation()
+  // const location = useLocation()
  //==========================
   useEffect(() => {
     const query = inputQuery.get('query') ?? '';
@@ -28,23 +27,27 @@ export const SearchMovies = () => {
     }
 
     const controller = new AbortController();
-
+    setLoading(true);
+    setError(false);
+    
     async function fetchData() {
       try {
-        setLoading(true);
-        setError(false);
-
+        
         const data = await getMoviesFromQuery(query, controller);
-        // if (data.results.length === 0) {
-        //   throw new Error("Gallery empty");
-        // }
+        if (data.results.length === 0) {
+          throw new Error("Movies not found");
+        }
       
-        setDataQueryMovies(data)
+        setDataQueryMovies(data);
+        setLoading(true);
+
       } catch (error) {
-        setError(true);
-        // onError(error.message);
+        // console.log(error);
+        if (error.message !== 'canceled') {
+          setError(error);
+        }
       }
-      finally {
+      finally { 
         setLoading(false);
       }
     
@@ -55,25 +58,18 @@ export const SearchMovies = () => {
   }, [inputQuery]);
 
 
-  // container Toast in component Searchbar
-  // const onError = (error) => {
-  //   // toast.error(error);
-  // }
-
   const { results: data } = dataQueryMovies;
   return (
     <div>
       <h1>Search movie</h1>
       <Searchbar /> 
 
-      {loading && <Loader />}
-      {/* { error && !loading && (<div>Wrong query. No data</div>) } */}
-
-      <MoviesList dataList={data} />
+      { loading && <Loader />}
+      {error && !loading && (<div>Wrong query. No data. { error.message }</div>) }
       
-      <ToastContainer
-        autoClose={2500}
-        theme="colored"/>
+      { !error && 
+        <MoviesList dataList={data} />
+      }
     </div>
   )
 }

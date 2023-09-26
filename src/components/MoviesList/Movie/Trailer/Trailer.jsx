@@ -12,7 +12,7 @@ export const Trailer = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    
+
     const controller = new AbortController();
     setLoading(true);
     setError(false);
@@ -21,6 +21,7 @@ export const Trailer = () => {
       try {
 
         const data = await getTrailerFromMovieId(movieId, controller);
+        // console.log(data);
         if (!data.length) {
           throw new Error("Official trailer not found");
         }
