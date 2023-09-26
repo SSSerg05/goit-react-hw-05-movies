@@ -1,17 +1,19 @@
 import { Genres } from "./Genres"
 import { Card, ContainerImg, Link, List } from "./Movie.styled";
 import { Trailer } from "./Trailer/Trailer";
-
+import NoPhoto from "../../../images/no-picture.jpg";
 
 export const Movie = ({ movie }) => {
 
   const realease_year = new Date(movie.release_date).getFullYear();
+  const srcImage = movie.poster_path ?
+    `https://image.tmdb.org/t/p/w500${movie.poster_path}` : NoPhoto;
 
   return (
     <Card>
       <ContainerImg>
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={srcImage}
           alt={movie.title}
           loading="lazy"
         />

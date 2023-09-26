@@ -56,7 +56,7 @@ export const MovieDetails = () => {
       { loading && <Loader />}
       { error && !loading && (<h2>{ error.message }</h2>) }
       { !error && !loading && (<Movie movie={dataMovie} />) }
-      <Suspense fallback={<div>LOADING Subpage...<Loader /></div>}>
+      <Suspense fallback={<div>LOADING Subpage...</div>}>
         <Outlet />
       </Suspense>
     </>

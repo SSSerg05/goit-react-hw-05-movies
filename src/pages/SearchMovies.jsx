@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // import { ImSearch } from 'react-icons/im';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from "components/Loader/Loader";
 
 import { getMoviesFromQuery } from "../services/Api";
@@ -55,7 +55,7 @@ export const SearchMovies = () => {
     fetchData();
 
     return () => {controller.abort()};
-  }, [inputQuery]);
+  }, [inputQuery, setInputQuery]);
 
 
   const { results: data } = dataQueryMovies;
@@ -65,7 +65,7 @@ export const SearchMovies = () => {
       <Searchbar /> 
 
       { loading && <Loader />}
-      {error && !loading && (<div>Wrong query. No data. { error.message }</div>) }
+      { error && !loading && (<div>Wrong query. No data. { error.message }</div>) }
       
       { !error && 
         <MoviesList dataList={data} />
