@@ -1,7 +1,8 @@
 import { useEffect, useState, Suspense  } from "react";
 import { useParams, useLocation, Outlet } from "react-router-dom";
-import { getMovieFromId } from "../services/Api";
+import { Loader } from "components/Loader/Loader";
 
+import { getMovieFromId } from "../services/Api";
 import { Movie } from "../components/MoviesList/Movie/Movie";
 import { GoBack } from "./MovieDetails.styled";
 // import { testDataMovie } from "../data/movie-id-346698.json"; 
@@ -10,14 +11,18 @@ import { GoBack } from "./MovieDetails.styled";
 export const MovieDetails = () => {
 
   const [dataMovie, setDataMovie] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const { movieId } = useParams();
   const location = useLocation();
 
   // Movie from Id
   useEffect(() => {
-    const controller = new AbortController();
 
+    const controller = new AbortController();
+    setLoading(true);
+    setError(false);
+    
     async function fetchData() {
       try {
 
@@ -27,10 +32,17 @@ export const MovieDetails = () => {
         }
 
         setDataMovie(data);
-        setIsLoading(true);
+        setLoading(true);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        if (error.message !== 'canceled') {
+          setError(error);
+        }
+
+      }
+      finally { 
+        setLoading(false);
       }
     
     }
@@ -41,10 +53,12 @@ export const MovieDetails = () => {
   return (
     <>
       <GoBack to={backLinkHref}>Go Back</GoBack>
-      {isLoading && (<Movie movie={dataMovie} />) }
-      <Suspense fallback={<div>LOADING Subpage...</div>}>
+      { loading && <Loader />}
+      { error && !loading && (<h2>{ error.message }</h2>) }
+      { !error && !loading && (<Movie movie={dataMovie} />) }
+      <Suspense fallback={<div>LOADING Subpage...<Loader /></div>}>
         <Outlet />
-      </Suspense>  
+      </Suspense>
     </>
   );
 }

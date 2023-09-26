@@ -13,7 +13,7 @@ export const MoviesList = ({ dataList }) => {
         return (
           <li key={movie.id}>
             <Link to={`${movie.id}`} state={{from: location}}>
-              {movie.original_title}
+              {movie.title}
             </Link> 
           </li>
         )

@@ -15,10 +15,11 @@ export const Home = () => {
     const controller = new AbortController();
 
     async function fetchData() {
+
+      setLoading(true);
+      setError(false);
       try {
 
-        setLoading(true);
-        setError(false);
 
         const data = await getTrendingForDay(controller);
         if (!data.results.length) {
@@ -29,9 +30,9 @@ export const Home = () => {
         setLoading(true);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         if (error.message !== 'canceled') {
-          setError(true);
+          setError(error);
         }
       }
       finally { 

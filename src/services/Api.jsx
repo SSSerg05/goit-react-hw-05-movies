@@ -71,7 +71,8 @@ getMoviesFromQuery.propTypes = {
   controller: PropTypes.object.isRequired,
 };
 
-// video for movie
+
+// video trailer from movieId
 // 'https://api.themoviedb.org/3/movie/820609/videos?language=en-US' \
 export const getTrailerFromMovieId = async (id, controller) => {
   const url = URL + `/movie/${id}/videos`;
@@ -79,5 +80,5 @@ export const getTrailerFromMovieId = async (id, controller) => {
   const responce = await axios.get(url, { params, signal: controller.signal });
   // console.log(responce.data.results);
 
-  return responce.data.results.filter(item => item.name === "Official Trailer");
+  return responce.data.results;
 };

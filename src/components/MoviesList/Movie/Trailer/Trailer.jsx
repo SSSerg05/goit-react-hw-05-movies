@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Loader } from "components/Loader/Loader";
 
 import {getTrailerFromMovieId} from "../../../../services/Api"
 
@@ -11,6 +12,7 @@ export const Trailer = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    
     const controller = new AbortController();
     setLoading(true);
     setError(false);
@@ -19,7 +21,6 @@ export const Trailer = () => {
       try {
 
         const data = await getTrailerFromMovieId(movieId, controller);
-        console.log(data);
         if (!data.length) {
           throw new Error("Official trailer not found");
         }
@@ -28,7 +29,7 @@ export const Trailer = () => {
         setLoading(true);
 
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         if (error.message !== 'canceled') {
           setError(error);
         }
@@ -43,17 +44,26 @@ export const Trailer = () => {
     return () => {controller.abort()};
   }, [movieId]);
 
-  const { key } = dataMovieTrailer[0];
   return (
     <>
-      {error && !dataMovieTrailer[0] && (<h2>{error.message}</h2>)} 
-      {!error && loading && (
-        <a
-          href={`https://www.youtube.com/watch?v=${key}`}
-          rel="noreferrer, noopener"
-          target="_blank">
-          <h2>Official trailer</h2>
-        </a>
+      {loading && <Loader />}
+      {error && (<h2>{error.message}</h2>)} 
+      {!error && !loading && (
+        <>
+          {
+            dataMovieTrailer
+              .filter(item => item.name === "Official Trailer")
+              .map(item => 
+                <a
+                  key={item.id}
+                  href={`https://www.${item.site}.com/watch?v=${item.key}`}
+                  rel="noreferrer noopener"
+                  target="_blank">
+                  <h2>Official trailer</h2>
+                </a>
+              )
+          }
+        </>
       )}
     </>
   )

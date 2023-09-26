@@ -13,13 +13,13 @@ export const Movie = ({ movie }) => {
       <ContainerImg>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.original_title}
+          alt={movie.title}
           loading="lazy"
         />
       </ContainerImg>
 
       <div>
-        <h1>{movie.original_title} ({realease_year})</h1>
+        <h1>{movie.title} ({realease_year})</h1>
         <p>Vote: {movie.vote_average}</p>
         <h2>Overview</h2>
         <p>{movie.overview}</p>
