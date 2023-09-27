@@ -14,7 +14,7 @@ export const SearchMovies = () => {
   // const [strQuery, setStrQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [inputQuery, setInputQuery] = useSearchParams();
+  const [inputQuery] = useSearchParams();
 
   // const location = useLocation()
  //==========================
@@ -53,7 +53,7 @@ export const SearchMovies = () => {
     fetchData();
 
     return () => {controller.abort()};
-  }, [inputQuery, setInputQuery]);
+  }, [inputQuery]);
 
 
   const { results: data } = dataQueryMovies;
