@@ -12,7 +12,7 @@ export const MoviesList = ({ dataList }) => {
       {dataList.map(movie => {
         return (
           <li key={movie.id}>
-            <Link to={`${movie.id}`} state={{from: location}}>
+            <Link to={`/movies/${movie.id}`} state={{from: location}}>
               {movie.title}
             </Link> 
           </li>

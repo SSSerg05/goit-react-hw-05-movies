@@ -1,5 +1,5 @@
 import { Name, Character, Card, Img } from "./Cast.styled.js";
-import NoPhoto from "../../../../images/no-picture.jpg"
+import NoPhoto from "../../images/no-picture.jpg"
 
 export const CastCard = ({ dataCast }) => {
   const {name, character, profile_path} = dataCast;

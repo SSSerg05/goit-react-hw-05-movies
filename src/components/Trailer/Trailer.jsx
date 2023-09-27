@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
 
-import {getTrailerFromMovieId} from "../../../../services/Api"
+import {getTrailerFromMovieId} from "../../services/Api"
 
 
 export const Trailer = () => {

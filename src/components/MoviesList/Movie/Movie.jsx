@@ -1,9 +1,9 @@
 import React from "react";
 import { Element, scroller } from "react-scroll";
 
-import { Genres } from "./Genres"
+import { Genres } from "../../Genres/Genres"
 import { Card, ContainerImg, LinkSubpage, List } from "./Movie.styled";
-import { Trailer } from "./Trailer/Trailer";
+import { Trailer } from "../../Trailer/Trailer";
 import NoPhoto from "../../../images/no-picture.jpg";
 
 export const Movie = ({ movie }) => {

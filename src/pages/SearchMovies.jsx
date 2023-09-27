@@ -21,7 +21,7 @@ export const SearchMovies = () => {
   useEffect(() => {
     const query = inputQuery.get('query') ?? '';
     if (!query) {
-      setInputQuery("");
+      return
     }
 
     const controller = new AbortController();

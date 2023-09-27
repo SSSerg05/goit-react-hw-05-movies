@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {getCreditsFromId} from "../../../../services/Api"
-import { CastList } from "./CastList";
-import { Header, Title } from "./Cast.styled";
+import {getReviewsFromId} from "../../services/Api"
+import { ReviewsList } from "./ReviewList";
+import { Header, Title } from "./Reviews.styled";
 
 
-export const Cast = () => {
+export const Reviews = () => {
   const {movieId} = useParams();
-  const [dataMovieCredits, setDataMovieCredits] = useState([]);
+  const [dataMovieReviews, setDataMovieReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -17,16 +17,17 @@ export const Cast = () => {
     setLoading(true);
     setError(false);
 
-    async function fetchDataCredits() {
+    async function fetchData() {
       try {
 
-        const data = await getCreditsFromId(movieId, controller);
+        const data = await getReviewsFromId(movieId, controller);
         if (!data.length) {
-          throw new Error("List credits/cast movies is empty");
+          throw new Error("List credits movies is empty");
         }
 
-        setDataMovieCredits(data);
+        setDataMovieReviews(data);
         setLoading(true);
+
       } catch (error) {
         // console.log(error);
         if (error.message !== 'canceled') {
@@ -38,23 +39,24 @@ export const Cast = () => {
       }
     
     }
-    fetchDataCredits();
+    fetchData();
 
     return () => {controller.abort()};
   }, [movieId]);
 
-
   return (
     <div>
       <Header>
-        <Title>Cast</Title>
+        <Title>Review</Title>
       </Header>
       { error && !loading && (<h2>{ error.message }</h2>) }
-      { !error && !loading && (<CastList dataList={ dataMovieCredits } />) }
-
+      { !error && !loading && (
+        <div>
+          <ReviewsList dataList={ dataMovieReviews } />
+        </div>
+      )}
     </div>
   )
-
 }
 
-export default Cast;
+export default Reviews;

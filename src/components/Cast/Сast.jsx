@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {getReviewsFromId} from "../../../../services/Api"
-import { ReviewsList } from "./ReviewList";
-import { Header, Title } from "./Reviews.styled";
+import {getCreditsFromId} from "../../services/Api"
+import { CastList } from "./CastList";
+import { Header, Title } from "./Cast.styled";
 
 
-export const Reviews = () => {
+export const Cast = () => {
   const {movieId} = useParams();
-  const [dataMovieReviews, setDataMovieReviews] = useState([]);
+  const [dataMovieCredits, setDataMovieCredits] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -17,17 +17,16 @@ export const Reviews = () => {
     setLoading(true);
     setError(false);
 
-    async function fetchData() {
+    async function fetchDataCredits() {
       try {
 
-        const data = await getReviewsFromId(movieId, controller);
+        const data = await getCreditsFromId(movieId, controller);
         if (!data.length) {
-          throw new Error("List credits movies is empty");
+          throw new Error("List credits/cast movies is empty");
         }
 
-        setDataMovieReviews(data);
+        setDataMovieCredits(data);
         setLoading(true);
-
       } catch (error) {
         // console.log(error);
         if (error.message !== 'canceled') {
@@ -39,24 +38,23 @@ export const Reviews = () => {
       }
     
     }
-    fetchData();
+    fetchDataCredits();
 
     return () => {controller.abort()};
   }, [movieId]);
 
+
   return (
     <div>
       <Header>
-        <Title>Review</Title>
+        <Title>Cast</Title>
       </Header>
       { error && !loading && (<h2>{ error.message }</h2>) }
-      { !error && !loading && (
-        <div>
-          <ReviewsList dataList={ dataMovieReviews } />
-        </div>
-      )}
+      { !error && !loading && (<CastList dataList={ dataMovieCredits } />) }
+
     </div>
   )
+
 }
 
-export default Reviews;
+export default Cast;

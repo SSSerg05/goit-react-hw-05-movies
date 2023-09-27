@@ -49,7 +49,7 @@ export const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = location.state?.from ?? "/movies";
   return (
     <>
       <GoBack to={backLinkHref}>Go Back</GoBack>
