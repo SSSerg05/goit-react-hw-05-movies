@@ -72,7 +72,7 @@ getMoviesFromQuery.propTypes = {
 };
 
 
-// video trailer from movieId
+// video trailers from movieId
 // 'https://api.themoviedb.org/3/movie/820609/videos?language=en-US' \
 export const getTrailerFromMovieId = async (id, controller) => {
   const url = URL + `/movie/${id}/videos`;

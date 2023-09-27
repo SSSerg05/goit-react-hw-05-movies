@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-// import { ImSearch } from 'react-icons/im';
-// import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from "components/Loader/Loader";
 
 import { getMoviesFromQuery } from "../services/Api";
