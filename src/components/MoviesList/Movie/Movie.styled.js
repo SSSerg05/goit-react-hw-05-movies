@@ -7,7 +7,7 @@ export const Card = styled.div`
 `;
 
 
-export const Link = styled(NavLink)`
+export const LinkSubpage = styled(NavLink)`
   display: block;
   margin-bottom: 12px;
   text-decoration: none;
