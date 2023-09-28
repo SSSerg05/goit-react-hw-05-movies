@@ -11,7 +11,6 @@ import { Searchbar } from "components/Searchbar/Searchbar";
 export const SearchMovies = () => { 
 
   const [dataQueryMovies, setDataQueryMovies] = useState([]);
-  // const [strQuery, setStrQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [inputQuery] = useSearchParams();
