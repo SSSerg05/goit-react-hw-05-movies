@@ -7,8 +7,7 @@ export const Button = styled.button`
 
   &:hover, &:focus {
     background-color: orangered;
-    border: none;
-    outline: 1px solid black;
+    border: 2px solid orangered;
   }
 `;
 
