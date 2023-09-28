@@ -1,11 +1,10 @@
-import { useEffect, useState, Suspense  } from "react";
+import { useEffect, useRef, useState, Suspense  } from "react";
 import { useParams, useLocation, Outlet } from "react-router-dom";
 import { Loader } from "components/Loader/Loader";
 
 import { getMovieFromId } from "../services/Api";
 import { Movie } from "../components/MoviesList/Movie/Movie";
 import { GoBack } from "./MovieDetails.styled";
-// import { testDataMovie } from "../data/movie-id-346698.json"; 
 
 
 export const MovieDetails = () => {
@@ -49,10 +48,13 @@ export const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  const backLinkHref = location.state?.from ?? "/";
+  // const backLinkHref = location.state?.from ?? "/";
+    const backLinkHref = useRef(location.state?.from ?? "/");
+  
   return (
     <>
-      <GoBack to={backLinkHref}>Go Back</GoBack>
+      {/* <GoBack to={backLinkHref}>Go Back</GoBack> */}
+      <GoBack to={backLinkHref.current}>Go Back</GoBack>
       { loading && <Loader />}
       { error && !loading && (<h2>{ error.message }</h2>) }
       { !error && !loading && (<Movie movie={dataMovie} />) }
