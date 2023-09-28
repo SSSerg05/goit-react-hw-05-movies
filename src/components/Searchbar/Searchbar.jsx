@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ImSearch } from 'react-icons/im';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Button, Input } from "./Searchbar.styled";
@@ -45,10 +45,6 @@ export const Searchbar = () => {
       <Button type="submit">
           <ImSearch />
       </Button>
-      
-      <ToastContainer
-        autoClose={1500}
-        theme="colored"/>
     </form>
   )
   
